@@ -134,8 +134,6 @@ After we have set up the models, we can then migrate to the database
 
 - This basically let's Django do the heavy lifting of creating SQL databases that correspond to the models we created
 
-</br>
-
 ```python
 class Topic(models.Model):
   top_name = models.CharField(max_length=264, unique=True)
@@ -182,4 +180,32 @@ In order to fully use the database and the Admin, we will need to create a "supe
 
 ```
 py manage.py createsuperuser
+```
+
+</br>
+
+## <span style="color:palegreen">Interacting with the Python Shell:</span>
+
+After migrating the models created above, we can use the python interactive shell to test out our new models  
+Code below is entered in the terminal:
+
+```python
+(env) PS C:\Users\James\Desktop\Django_Projects\Django_Project_Two> py manage.py shell
+
+(InteractiveConsole)
+
+>>> from second_app.models import Topic
+
+>>> print(Topic.objects.all())
+
+<QuerySet []>
+
+>>> t = Topic(top_name="Social Network")
+
+>>> t.save()
+
+>>> print(Topic.objects.all())
+
+<QuerySet [<Topic: Social Network>]>
+
 ```

@@ -209,3 +209,152 @@ Code below is entered in the terminal:
 <QuerySet [<Topic: Social Network>]>
 
 ```
+
+<br>
+
+# <span style="color:lightseagreen">Models-Templates-Views:</span>
+
+## <span style="color:palegreen">Overview:</span>
+
+Django operates on what is known as Models-Templates-Views
+
+- This is also called "MTV" and encompasses the idea of how to connect everything we've talked about so far: models, templates and views
+
+<br>
+
+There are a few basic steps to achieving the goal of serving dynamic content to a user based off the connection of the models, views and templates:
+
+1. In the `views.py` file we import any models that we will need to use
+1. Use the view to query the model for data that we will need
+1. Pass results from the model to the template
+1. Edit the template so that it is ready to accept and display the data from the model
+1. Map a URL to the view
+
+<br>
+
+## <span style="color:palegreen">Example From Course:</span>
+
+<br>
+
+### <span style="color:lightyellow">Models:</span>
+
+```python
+from django.db import models
+from django.db.models.deletion import CASCADE
+
+
+class Topic(models.Model):
+    top_name = models.CharField(max_length=264, unique=True)
+
+    def __str__(self):
+        return self.top_name
+
+
+class Webpage(models.Model):
+    topic = models.ForeignKey(Topic, on_delete=CASCADE)
+    name = models.CharField(max_length=264, unique=True)
+    url = models.URLField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class AccessRecord(models.Model):
+    name = models.ForeignKey(Webpage, on_delete=CASCADE)
+    date = models.DateField()
+
+    def __str__(self):
+        return str(self.date)
+
+```
+
+<br>
+
+### <span style="color:lightyellow">Views:</span>
+
+```python
+from django.shortcuts import render
+from django.http import HttpResponse
+from .models import Topic, Webpage, AccessRecord
+
+
+def index(request):
+    webpages_list = AccessRecord.objects.order_by("date")
+    date_dict = {"access_records": webpages_list}
+
+    return render(request, "second_app/index.html", context=date_dict)
+
+```
+
+<br>
+
+### <span style="color:lightyellow">URLs:</span>
+
+```python
+from django.urls import path
+from . import views
+
+app_name = "second_app"
+
+urlpatterns = [
+    # Homepage View
+    path("", views.index, name="index"),
+]
+
+```
+
+<br>
+
+### <span style="color:lightyellow">Template:</span>
+
+```html
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Django Level Two</title>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <h1>Hi welcome to Django Level Two</h1>
+    <h2>These are your access records:</h2>
+
+    <div class="container">
+      {% if access_records %}
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <th>Site Name</th>
+          <th>Date Accessed</th>
+        </thead>
+
+        {% for acc in access_records %}
+        <tr>
+          <td>{{ acc.name }}</td>
+          <td>{{ acc.date }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>No Access Records Found</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
+```
+
+<br>
+
+### Index View:
+
+![alt text](modelstemplatesviews.jpg "Title")

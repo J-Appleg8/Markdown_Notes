@@ -22,7 +22,7 @@ The main architectural design pattern employed by Django is:
 
 <br>
 
-![alt text](django_diagram.jpg "Title")  
+![alt text](images/django_diagram.jpg "Title")  
 <br>
 
 ## <span style="color:palegreen">Django App Files:</span>
@@ -357,4 +357,4 @@ urlpatterns = [
 
 ### Index View:
 
-![alt text](modelstemplatesviews.jpg "Title")
+![alt text](images/modelstemplatesviews.jpg "Title")

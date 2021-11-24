@@ -144,3 +144,84 @@ GET:
 POST:
 
 - Submits data to be processed to a resource
+
+<br>
+
+# <span style="color:lightseagreen">Django Model Forms:</span>
+
+## <span style="color:palegreen">Overview:</span>
+
+Model forms allow you to accept form input and pass it to a model. Instead of inheriting from forms.Forms, we will inherit from forms.ModelForm
+
+- This helper class allows us to create a form from a pre-existing model
+- We then add an inline class called Meta, which provides information connecting the model to the form
+
+```python
+from django import forms
+from myapp.models import MyModel
+
+class MyNewForm(forms.ModelForm):
+
+    # Form Fields go here (with validators params if you want validators)
+
+    class Meta:
+        model = MyModel
+        fields = # Lets see the options!
+
+```
+
+<br>
+
+Option 1: Set it to "`__all__`":
+
+```python
+from django import forms
+from myapp.models import MyModel
+
+class MyNewForm(forms.ModelForm):
+
+    # Form Fields go here (with validators params if you want validators)
+
+    class Meta:
+        model = MyModel
+        fields = "__all__"
+
+```
+
+<br>
+
+Option 2: Exclude certain fields
+
+```python
+from django import forms
+from myapp.models import MyModel
+
+class MyNewForm(forms.ModelForm):
+
+    # Form Fields go here (with validators params if you want validators)
+
+    class Meta:
+        model = MyModel
+        exclude = ["field1", "field2"]
+
+```
+
+<br>
+
+Option 3: List included fields
+
+```python
+from django import forms
+from myapp.models import MyModel
+
+class MyNewForm(forms.ModelForm):
+
+    # Form Fields go here (with validators params if you want validators)
+
+    class Meta:
+        model = MyModel
+        fields = ("field1", "field2")
+
+```
+
+<br>

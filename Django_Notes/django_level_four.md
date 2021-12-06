@@ -50,3 +50,83 @@ Can be changed to:
 ```html
 <a href="{% url 'basicapp:thanku' %}">Thanks</a>
 ```
+
+<br>
+
+# <span style="color:lightseagreen">Template Inheritance:</span>
+
+## <span style="color:palegreen">Overview:</span>
+
+Template inheritance saves a lot of repetitive work and makes it much easier to maintain the same base look and feel across the entire website
+
+For Example: If we wanted a navbar at the top of our page, it wouldn't make sense to continually have the same navbar HTML code in each individual .html file
+
+### <span style="color:lightyellow">The main steps for inheritance:</span>
+
+1. Find the repetitive parts of your project
+1. Create a base template of them
+1. Set the tags in the base template
+1. Extend and call those tags anywhere
+
+`base.html`:
+
+```html
+<links to JS, CSS, Bootstrap></links>
+<!-- <bunch of html like navbars> -->
+<body>
+  {% block body_block %} {% endblock %}
+</body>
+```
+
+`other.html`
+
+```html
+<!DOCTYPE html>
+{% extends "basic_app/base.html" %}
+<p></p>
+{% block body_block %}
+<p>HTML specific to other.html</p>
+{% endblock %}
+```
+
+<br>
+
+# <span style="color:lightseagreen">Templates, Features & Filters:</span>
+
+## <span style="color:palegreen">Template Filters:</span>
+
+Filters allow you to make changes to the information before injecting it to the site page, like string operations or arithmetic
+
+Luckily Django provides a ton of easy to implement filters that allow you to effect the inject before displaying it to the user
+
+### <span style="color:lightyellow">The general form of a filter is:</span>
+
+- Not all filters take in parameters though
+
+```html
+{{ value | filter }}
+```
+
+For Example:
+
+```html
+{{ django | title }}
+```
+
+with the context of:
+
+```python
+{'django': 'the web framework for perfectionists with deadlines'}
+```
+
+### <span style="color:lightyellow">Some filters also take in parameters:</span>
+
+```html
+{{ value | filter:"parameter" }}
+```
+
+For Example:
+
+```html
+{{ my_date | date:"Y-m-d" }}
+```

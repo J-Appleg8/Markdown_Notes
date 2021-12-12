@@ -8,6 +8,8 @@ A Django Project is a collection of applications and configurations that, when c
 
 ## <span style="color:palegreen">Overview:</span>
 
+---
+
 A Django Application is created to perform a particular functionality for your entire web application
 
 - **Example:** Registration app, polling app, comments app etc.
@@ -26,6 +28,8 @@ The main architectural design pattern employed by Django is:
 <br>
 
 ## <span style="color:palegreen">Django App Files:</span>
+
+---
 
 - \_\_init\_\_.py
   - This is a blank Python script that, due to its special name, let's Python know that this directory can be treated as a package
@@ -48,6 +52,8 @@ The main architectural design pattern employed by Django is:
 <br>
 
 ## <span style="color:palegreen">URL Mapping:</span>
+
+---
 
 - The `include()` function allows us to look for a match with regular expressions and link back to our application's own `urls.py` file
 
@@ -74,6 +80,8 @@ urlpatterns = [
 <br>
 
 ## <span style="color:palegreen">Models:</span>
+
+---
 
 We use Models to incorporate a database into a Django Project
 
@@ -129,6 +137,8 @@ Imagine we have two models
 </br>
 
 ## <span style="color:palegreen">Setting Up Models:</span>
+
+---
 
 After we have set up the models, we can then migrate to the database
 
@@ -186,6 +196,8 @@ py manage.py createsuperuser
 
 ## <span style="color:palegreen">Interacting with the Python Shell:</span>
 
+---
+
 After migrating the models created above, we can use the python interactive shell to test out our new models  
 Code below is entered in the terminal:
 
@@ -216,6 +228,8 @@ Code below is entered in the terminal:
 
 ## <span style="color:palegreen">Overview:</span>
 
+---
+
 Django operates on what is known as Models-Templates-Views
 
 - This is also called "MTV" and encompasses the idea of how to connect everything we've talked about so far: models, templates and views
@@ -233,6 +247,8 @@ There are a few basic steps to achieving the goal of serving dynamic content to 
 <br>
 
 ## <span style="color:palegreen">Example From Course:</span>
+
+---
 
 <br>
 

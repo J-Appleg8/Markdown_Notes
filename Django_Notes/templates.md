@@ -2,6 +2,8 @@
 
 ## <span style="color:palegreen">Overview:</span>
 
+---
+
 1. We can use templates to have a "base" template and inherit that template in the .html files
 
    - This saves a lot of time and will help create a unified look and feel across every page of your website
@@ -15,6 +17,8 @@
 <br>
 
 ## <span style="color:palegreen">Relative URLs with Templates:</span>
+
+---
 
 You can replace hard-coded URLs in a template a few different ways:
 
@@ -57,6 +61,8 @@ Can be changed to:
 
 ## <span style="color:palegreen">Overview:</span>
 
+---
+
 Template inheritance saves a lot of repetitive work and makes it much easier to maintain the same base look and feel across the entire website
 
 For Example: If we wanted a navbar at the top of our page, it wouldn't make sense to continually have the same navbar HTML code in each individual .html file
@@ -94,6 +100,8 @@ For Example: If we wanted a navbar at the top of our page, it wouldn't make sens
 # <span style="color:lightseagreen">Templates, Features & Filters:</span>
 
 ## <span style="color:palegreen">Template Filters:</span>
+
+---
 
 Filters allow you to make changes to the information before injecting it to the site page, like string operations or arithmetic
 

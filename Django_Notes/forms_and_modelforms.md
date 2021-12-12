@@ -2,6 +2,8 @@
 
 ## <span style="color:palegreen">Overview:</span>
 
+---
+
 Django Forms Advantages:
 
 - Can quickly generate HTML form widgets
@@ -150,6 +152,8 @@ POST:
 # <span style="color:lightseagreen">Django Model Forms:</span>
 
 ## <span style="color:palegreen">Overview:</span>
+
+---
 
 Model forms allow you to accept form input and pass it to a model. Instead of inheriting from forms.Forms, we will inherit from forms.ModelForm
 
